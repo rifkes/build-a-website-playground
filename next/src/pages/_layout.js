@@ -23,8 +23,8 @@ const Layout = (props) => {
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 			</Head>
 			
-			<div className='grid grid-cols-2 gap-4 h-full'>
-				<div className='col-span-1 h-full'>
+			<div className='grid grid-rows-2 landscape:grid-rows-1 landscape:grid-cols-2 gap-4 h-full'>
+				<div className='row-span-1 landscape:row-span-auto landscape:col-span-1 h-full'>
 					<textarea
 						rows={ 20 }
 						value={codeSnippet}
