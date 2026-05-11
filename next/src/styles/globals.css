@@ -1,0 +1,359 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/Geist-Black.woff2') format('woff2'),
+        url('/fonts/Geist-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/Geist-Bold.woff2') format('woff2'),
+        url('/fonts/Geist-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/Geist-Regular.woff2') format('woff2'),
+        url('/fonts/Geist-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+  --breakpoint-xxs: 0px;
+  --breakpoint-xs: 500px;
+  --breakpoint-sm: 768px;
+  --breakpoint-sm-md: 1024px;
+  --breakpoint-md: 1200px;
+  --breakpoint-lg: 1500px;
+  --breakpoint-xl: 1920px;
+  --breakpoint-xxl: 2500px;
+
+  --color-pale-yellow: #FFF2D8;
+  --color-yellow: #FFB727;
+  --color-light-grey: #EEEEEE;
+  --color-navy: #0D1449;
+
+	--color-foreground: var(--color-navy);
+	--color-background: white;
+	--color-background-2: var(--color-pale-yellow);
+	--color-accent: var(--color-yellow);
+
+  --animate-float: float 3s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0.5em); }
+    50% { transform: translateY(-0.5em); }
+  }
+}
+
+@custom-variant touch (@media (hover: none));
+@custom-variant mouse (@media (hover: hover));
+@custom-variant max-xs (@media (max-width: 499px));
+@custom-variant max-sm (@media (max-width: 767px));
+@custom-variant max-sm-md (@media (max-width: 1023px));
+@custom-variant max-md (@media (max-width: 1199px));
+@custom-variant max-lg (@media (max-width: 1499px));
+@custom-variant max-xl (@media (max-width: 1919px));
+@custom-variant max-xxl (@media (max-width: 2499px));
+
+* {
+	font-family: 'Geist', sans-serif;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+html,
+body {
+	/* position: fixed;
+	overflow: hidden; */
+	font-size: 16px;
+	color: var(--color-navy);
+}
+
+@media (min-width: 768px) {
+	html, body {
+		font-size: 18px;
+	}
+}
+
+.font-heading {
+	font-family: 'Geist', sans-serif;
+	font-size: 2rem;
+	line-height: 1.2em;
+	font-weight: 900;
+}
+
+.font-subheading {
+	font-family: 'Geist', sans-serif;
+	font-weight: bold;
+}
+
+.font-big {
+	font-size: 28px;
+	line-height: 1.2em;
+	font-weight: bold;
+}
+
+.font-huge {
+	font-size: 48px;
+	line-height: 1.2em;
+	font-weight: bold;
+}
+
+@media (min-width: 768px) {
+	.font-heading,
+	.font-huge,
+	.font-big {
+		font-size: 3vw;
+	}
+}
+
+.font-subheading {
+	font-size: 1.25rem;
+	line-height: 1.35em;
+	font-weight: bold;
+}
+
+.font-body {
+	font-family: 'Geist', sans-serif;
+	font-weight: normal;
+	font-size: 1rem;
+}
+
+.font-body.font-bold {
+	font-weight: bold;
+}
+
+.font-small {
+	font-family: 'Geist', sans-serif;
+	font-weight: normal;
+	font-size: 0.75rem;
+}
+
+.rich-text {
+	a {
+		text-decoration: underline;
+	}
+	p {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.large {
+		font-size: 1.25rem;
+		font-weight: bold;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		margin: 0.5em 0;
+	}
+
+	p, h1, h2, h3, h4, h5, h6 {
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+img {
+	user-select: none;
+	pointer-events: none;
+}
+
+canvas,
+iframe {
+	user-select: none;
+}
+
+button {
+	user-select: none;
+}
+
+.pointer-events-all {
+	pointer-events: all;
+}
+
+* {
+	border-color: inherit;
+}
+
+.rich-text-center * {
+	text-align: center !important;
+}
+
+.rich-text-center img {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.rich-text ul {
+	padding-left: 1em;
+	list-style-position: outside;
+	list-style-type: none;
+	padding-left: 1em;
+}
+
+.rich-text ul li {
+	position: relative;
+	display: list-item;
+	margin-top: 0.75em;
+	margin-bottom: 0.75em;
+
+	&::before {
+		content: '—';
+		position: absolute;
+		left: -1.5em;
+		top: 0;
+	}
+}
+
+.max-w-textcol {
+	max-width: 40rem;
+}
+
+.rich-text .rich-text-h1,
+.rich-text .rich-text-h2,
+.rich-text .rich-text-h3,
+.rich-text .rich-text-p,
+.rich-text .rich-text-large,
+.rich-text .rich-text-small,
+.rich-text .rich-text-normal {
+	width: 100%;
+	max-width: 42rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+	text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+	.rich-text .rich-text-h1,
+	.rich-text .rich-text-h2,
+	.rich-text .rich-text-h3,
+	.rich-text .rich-text-p,
+	.rich-text .rich-text-large,
+	.rich-text .rich-text-small,
+	.rich-text .rich-text-normal {
+		max-width: 44rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.rich-text .rich-text-h1,
+.rich-text .rich-text-h2,
+.rich-text .rich-text-h3 {
+	margin-top: 2rem;
+}
+
+.rich-text .dropdown .rich-text-h1,
+.rich-text .dropdown .rich-text-h2,
+.rich-text .dropdown .rich-text-h3,
+.rich-text .dropdown .rich-text-p,
+.rich-text .dropdown .rich-text-large,
+.rich-text .dropdown .rich-text-small,
+.rich-text .dropdown .rich-text-normal {
+	padding: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.social-container,
+.social-container *:not(.social-svg-mask),
+.social-container path {
+	fill: inherit !important;
+}
+
+.social-link * {
+	fill: inherit !important;
+}
+
+.menu-button-bg-navy {
+	background-color: var(--color-navy);
+	color: var(--color-yellow);
+
+	&:hover {
+		background-color: var(--color-yellow);
+		color: var(--color-navy);
+	}
+
+	&:active {
+		background-color: var(--color-yellow);
+		color: var(--color-navy);
+	}
+
+	&:focus {
+		background-color: var(--color-yellow);
+		color: var(--color-navy);
+	}
+}
+
+.menu-button-bg-yellow {
+	background-color: var(--color-yellow);
+	color: var(--color-navy);
+
+	&:hover {
+		background-color: var(--color-navy);
+		color: var(--color-yellow);
+	}
+
+	&:active {
+		background-color: var(--color-navy);
+		color: var(--color-yellow);
+	}
+
+	&:focus {
+		background-color: var(--color-navy);
+		color: var(--color-yellow);
+	}
+}
+
+.menu-button-fg-yellow {
+	color: var(--color-yellow);
+
+	&:hover {
+		color: var(--color-navy);
+	}
+
+	&:active {
+		color: var(--color-navy);
+	}
+
+	&:focus {
+		color: var(--color-navy);
+	}
+}
+
+.menu-button-fg-navy {
+	color: var(--color-navy);
+
+	&:hover {
+		color: var(--color-yellow);
+	}
+
+	&:active {
+		color: var(--color-yellow);
+	}
+
+	&:focus {
+		color: var(--color-yellow);
+	}
+}
