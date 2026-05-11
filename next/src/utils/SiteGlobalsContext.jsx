@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/router';
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const getCookie = (cname) => {
