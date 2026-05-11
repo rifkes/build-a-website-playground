@@ -21,11 +21,15 @@ const htmlSnippet = `<!DOCTYPE html>
 			a {
 				color: red;
 			}
+			h1 {
+				margin-top: 0;
+				margin-bottom: 1rem;
+			}
 		</style>
 	</head>
 	<body>
 		<div>
-			<h1>This is the beginning of your website!</h1>
+			<h1>This is (maybe) the beginning of your website!</h1>
 		</div>
 		<p>
 			<a target='_blank' href='https://www.w3schools.com/tags/ref_byfunc.asp/'>Click here</a> to find out more about elements you can add to your page. Can you figure out how to add a heading, paragraph, and a link?
