@@ -32,7 +32,7 @@ const htmlSnippet = `<!DOCTYPE html>
 			<h1>This is (maybe) the beginning of your website!</h1>
 		</div>
 		<p>
-			<a target='_blank' href='https://www.w3schools.com/tags/ref_byfunc.asp/'>Click here</a> to find out more about elements you can add to your page. Can you figure out how to add a heading, paragraph, and a link?
+			<a target='_blank' href='https://www.w3schools.com/tags/ref_byfunc.asp'>Click here</a> to find out more about elements you can add to your page. Can you figure out how to add a heading, paragraph, and a link?
 				How about an image?
 		</p>
 
