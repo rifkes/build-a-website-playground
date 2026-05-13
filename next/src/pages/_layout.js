@@ -37,6 +37,7 @@ const Layout = (props) => {
 							caretColor: 'hotpink',
 						}}
 						onKeyDown={(e) => {
+							// console.log(e.key);
 							if (e.key == 'Tab') {
 								e.preventDefault();
 								const t = e.target;
@@ -49,6 +50,31 @@ const Layout = (props) => {
 
 								// put caret at right position again
 								t.selectionStart = t.selectionEnd = start + 1;
+							} else if (e.key == 'Enter') {
+								e.preventDefault();
+								const t = e.target;
+								const start = t.selectionStart;
+								const end = t.selectionEnd;
+
+								const previousLine = t.value.substring(0, start).split('\n').pop();
+								const tabsAndSpaces = [];
+								for (let i = 0; i < previousLine.length; i++) {
+									if (previousLine[i] === '\t' || previousLine[i] === ' ') {
+										tabsAndSpaces.push(previousLine[i]);
+									} else {
+										if (previousLine[i] === '<' || previousLine[i] === '{') {
+											tabsAndSpaces.push('\t');
+										}
+										break;
+									}
+								}
+								const count = tabsAndSpaces.length;
+								const newLine = '\n' + '\t'.repeat(count);
+								t.value = t.value.substring(0, start) + newLine + t.value.substring(end);
+								t.selectionStart = t.selectionEnd = start + count + 1;
+							}
+							else if (e.key == 'Control' || e.key == 'Meta' || e.key == 'Alt') {
+								e.preventDefault();
 							}
 						}}
 					/>
